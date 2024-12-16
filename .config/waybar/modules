@@ -234,7 +234,7 @@
 		"playing": "",
 		"stopped": "",
 	},
-	// "ignored-players": ["firefox"]
+	"ignored-players": ["firefox"],
 	"max-length": 30,
 },
 }

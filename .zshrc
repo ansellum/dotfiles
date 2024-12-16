@@ -9,7 +9,7 @@ plugins=(
     git
     archlinux
     zsh-autosuggestions
-    zsh-syntax-highlighting    
+    zsh-syntax-highlighting   
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -55,7 +55,9 @@ alias grubcfg='sudo grub-mkconfig -o /boot/grub/grub.cfg'
 alias yt-mp3='yt-dlp  -i --extract-audio --audio-format mp3 --audio-quality 0'
 
 # dotfiles
-alias dotfiles='/usr/bin/git --git-dir="$HOME/.dotfiles/" --work-tree="$HOME"'
+alias dot='/usr/bin/git --git-dir="$HOME/.dotfiles/" --work-tree="$HOME"'
+
+autoload zmv
 
 # Set-up FZF key bindings (CTRL R for fuzzy history finder)
 source <(fzf --zsh)
