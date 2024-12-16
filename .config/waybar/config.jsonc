@@ -17,7 +17,7 @@
 "ipc": true,
 "margin-top": 5,
 //"margin-bottom": 5,
-"width": 2256,
+"width": 2560,
     
 "modules-left": [
     "clock", 
@@ -33,6 +33,7 @@
     "memory",
     "cpu",
     "disk",
+    "custom/gpu",
     "battery",
     "custom/power"
     ],

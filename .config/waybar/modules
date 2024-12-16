@@ -136,11 +136,11 @@
 	"tooltip-format": "{used:0.1f}GB/{total:0.1f}G",
 	"on-click-right": "kitty --title btop sh -c 'btop'"
 },
-"custom/gpu-usage": {
-  "exec": "nvidia-smi --query-gpu=utilization.gpu --format=csv,noheader,nounits",
-  "format": "{}% ☭ ",
-  "return-type": "",
-  "interval": 1
+"custom/gpu": {
+	"exec": "nvidia-smi --query-gpu=utilization.gpu --format=csv,noheader,nounits",
+  	"format": "{}% ☭ ",
+	"return-type": "",
+	"interval": 1
 },
 "custom/power": {
 	"format": "⏻ ",
