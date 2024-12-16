@@ -1,13 +1,13 @@
 # Which plugins would you like to load?
-plugins=(git)
+plugins=(
+    git
+    archlinux
+    zsh-autosuggestions
+    zsh-syntax-highlighting   
+)
 
-# Set variables
-aurhelper='yay'
-
-# User configuration
-
-# Compilation flags
-# export ARCHFLAGS="-arch $(uname -m)"
+# Variables
+aurhelper="yay"
 
 # Display Pokemon-colorscripts
 # Project page: https://gitlab.com/phoneybadger/pokemon-colorscripts#on-other-distros-and-macos
@@ -16,7 +16,6 @@ pokemon-colorscripts -r 1-5
 # Config settings
 alias zshconfig="nvim ~/.zshrc"
 alias hyprconfig="nvim ~/.config/hypr/hyprland.conf"
-alias keydconfig="sudo nvim /etc/keyd/default.conf"
 
 ## Program replacements
 alias yeet="$aurhelper -Rns"
@@ -48,4 +47,3 @@ export EDITOR=nvim
 export VISUAL=nvim
 
 eval "$(starship init zsh)"
-
