@@ -13,6 +13,20 @@ aurhelper="yay"
 # Project page: https://gitlab.com/phoneybadger/pokemon-colorscripts#on-other-distros-and-macos
 pokemon-colorscripts -r 1-5
 
+###########
+## BINDS ##
+###########
+bindkey "^[[H"	beginning-of-line
+bindkey "^[[F"	end-of-line
+bindkey "^[[3~"	delete-char
+
+bindkey "^[[1;5C" forward-word
+bindkey "^[[1;5D" backward-word
+
+#############
+## ALIASES ##
+#############
+
 # Config settings
 alias zshconfig="nvim ~/.zshrc"
 alias hyprconfig="nvim ~/.config/hypr/hyprland.conf"
@@ -42,7 +56,9 @@ alias yt-mp3='yt-dlp  -i --extract-audio --audio-format mp3 --audio-quality 0'
 # dotfiles
 alias dot='/usr/bin/git --git-dir="$HOME/.dotfiles/" --work-tree="$HOME"'
 
-# Environment Variables
+###########################
+## Environment Variables ##
+###########################
 export EDITOR=nvim
 export VISUAL=nvim
 
