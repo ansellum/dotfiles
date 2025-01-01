@@ -1,8 +1,21 @@
+# AUTOCOMPLETION
+
+# initialize autocompletion
+autoload -U compinit && compinit
+unsetopt completealiases
+
+# history setup
+setopt SHARE_HISTORY
+HISTFILE=$HOME/.zhistory
+SAVEHIST=1000
+HISTSIZE=999
+setopt HIST_EXPIRE_DUPS_FIRST
+
+
 # Which plugins would you like to load?
 plugins=(
     git
     archlinux
-    zsh-autosuggestions
     zsh-syntax-highlighting   
 )
 
@@ -22,6 +35,10 @@ bindkey "^[[3~"	delete-char
 
 bindkey "^[[1;5C" forward-word
 bindkey "^[[1;5D" backward-word
+
+# autocompletion using arrow keys (based on history)
+bindkey '\e[A' history-search-backward
+bindkey '\e[B' history-search-forward
 
 #############
 ## ALIASES ##
@@ -61,5 +78,6 @@ alias dot='/usr/bin/git --git-dir="$HOME/.dotfiles/" --work-tree="$HOME"'
 ###########################
 export EDITOR=nvim
 export VISUAL=nvim
+export PATH="$HOME/bin:$PATH"
 
 eval "$(starship init zsh)"
