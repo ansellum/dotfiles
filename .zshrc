@@ -61,8 +61,9 @@ alias lt='eza -a --tree --icons'
 # Always mkdir a path (this doesn't inhibit functionality to make a single dir)
 alias mkdir='mkdir -p'
 
-# Kill shortcut
+# Command shortcuts
 alias pk='pkill -f -9'
+alias poweroff='shutdown -h now'
 
 # grub config
 alias grubcfg='sudo grub-mkconfig -o /boot/grub/grub.cfg'
