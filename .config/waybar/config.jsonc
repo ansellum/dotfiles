@@ -17,7 +17,7 @@
 "ipc": true,
 "margin-top": 5,
 //"margin-bottom": 5,
-"width": 2560,
+"width": 2256,
     
 "modules-left": [
     "clock", 
