@@ -1,16 +1,18 @@
 # AUTOCOMPLETION
 
 # initialize autocompletion
-autoload -U compinit && compinit
-unsetopt completealiases
+autoload -U compinit
+compinit
+#unsetopt completealiases
 
 # history setup
+setopt APPEND_HISTORY
 setopt SHARE_HISTORY
 HISTFILE=$HOME/.zhistory
 SAVEHIST=1000
 HISTSIZE=999
 setopt HIST_EXPIRE_DUPS_FIRST
-
+setopt EXTENDED_HISTORY
 
 # Which plugins would you like to load?
 plugins=(
