@@ -64,7 +64,7 @@ alias lt='eza -a --tree --icons'
 alias mkdir='mkdir -p'
 
 # Command shortcuts
-alias pk='pkill -f -9'
+alias pk='pkill -fi -9'
 alias poweroff='shutdown -h now'
 
 # grub config
