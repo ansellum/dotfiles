@@ -23,7 +23,7 @@
     "clock", 
     "mpris", 
     "tray", 
-    "custom/swaync"
+    "idle_inhibitor"
     ],
       
 "modules-center": ["hyprland/workspaces#pacman"], 

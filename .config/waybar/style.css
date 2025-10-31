@@ -148,7 +148,7 @@ window#waybar.empty #window {
 }
 
 #idle_inhibitor {
-  color: @blue;
+  color: @white;
 }
 
 #bluetooth,

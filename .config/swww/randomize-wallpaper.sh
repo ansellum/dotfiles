@@ -19,4 +19,4 @@ PICS=($(find ${wallDIR} -type f \( -name "*.jpg" -o -name "*.jpeg" -o -name "*.p
 RANDOMPICS=${PICS[ $RANDOM % ${#PICS[@]} ]}
 
 # Update the wallpaper on selected monitor
-swww img -o $focused_monitor ${RANDOMPICS} $SWWW_PARAMS
+swww img -o $focused_monitor "${RANDOMPICS}" $SWWW_PARAMS
