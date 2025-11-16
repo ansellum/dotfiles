@@ -59,6 +59,18 @@
 	"tooltip": true,
 	"tooltip-format": "󱧣 Quick Tips",
 },
+"idle_inhibitor": {
+    "format": "{icon}",
+    "format-icons": {
+        "activated": "👁",
+        "deactivated": "☕︎"
+    },
+    "icon-size": 20,
+    "tooltip": true,
+    "tooltip-format-activated": "Disable screen lock",
+    "tooltip-format-deactivated": "Enable screen lock",
+    "start-activated": false,
+},
 "bluetooth": {
 	"format": "",
 	"format-disabled": "󰂳",
@@ -151,7 +163,7 @@
 "custom/cycle_wall": {
 	"format": " ",
 	"on-click": "~/.config/swww/randomize-wallpaper.sh",
-	"tooltip": true,
+	"tooltip": false,
 	"tooltip-format": "swww query | cut -d'image: ' -f 2",
 },
 "custom/swaync": {

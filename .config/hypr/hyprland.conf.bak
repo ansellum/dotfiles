@@ -24,7 +24,7 @@ $discord = discord
 
 # Start-up applications
 exec-once = [workspace 1] firefox
-exec-once = [workspace 2 silent] $notes
+#exec-once = [workspace 2 silent] obsidian
 exec-once = [workspace 5 silent] $discord
 exec-once = [workspace 6 silent] spotify-launcher
 
@@ -32,19 +32,23 @@ exec-once = [workspace 6 silent] spotify-launcher
 exec-once = swaync
 exec-once = waybar
 exec-once = udiskie
-exec-once = hypridle
-#exec-once = swww-daemon
-
-# sunshine
-exec-once = sunshine
-exec-once = MoonDeckBuddy
-exec-once = MoonDeckStream
 
 # Authentication polkit
 exec-once = /usr/lib/polkit-kde-authentication-agent-1
 
 # Screensharing
-exec-once = dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+exec-once=dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+
+# Apps/Visual
+exec-once = [workspace 1] firefox
+exec-once = [workspace 5 silent] $discord
+exec-once = [workspace 6 silent] spotify-launcher
+exec-once = [workspace 2 silent] $notes
+#exec-once = nm-applet &
+exec-once = waybar
+
+# Activate auto-mount
+exec-once = udiskie &
 
 #############################
 ### ENVIRONMENT VARIABLES ###
@@ -63,9 +67,6 @@ env = QT_QPA_PLATFORMTHEME,qt6ct
 env = XDG_CURRENT_DESKTOP,Hyprland
 env = XDG_SESSION_TYPE,wayland
 env = XDG_SESSION_DESKTOP,Hyprland
-env = DISPLAY,:0
-#env = XDG_RUNTIME_DIR,"/run/user/$UID"
-#env = DBUS_SESSION_BUS_ADDRESS,"unix:path=${XDG_RUNTIME_DIR}/bus"
 
 cursor {
     no_hardware_cursors = true
@@ -80,7 +81,7 @@ cursor {
 # https://wiki.hyprland.org/Configuring/Variables/#general
 general {
     gaps_in = 5
-    gaps_out = 10
+    gaps_out = 20
 
     border_size = 2
 
@@ -168,7 +169,6 @@ input {
     kb_rules =
 
     follow_mouse = 1
-    #scroll_factor = 2.0
 
     # Laptop w/ MX Anywhere 3
     #sensitivity = -0.5 # -1.0 - 1.0, 0 means no modification.
@@ -184,8 +184,16 @@ input {
 
 # https://wiki.hyprland.org/Configuring/Variables/#gestures
 gestures {
-    #workspace_swipe = true
+    workspace_swipe = true
     workspace_swipe_distance = 500
+}
+
+# Example per-device config
+# See https://wiki.hyprland.org/Configuring/Keywords/#per-device-input-configs for more
+device {
+    name = logitech-mx-anywhere-3-1
+    sensitivity = -0.6
+    accel_profile = "flat"
 }
 
 
@@ -254,8 +262,6 @@ bindm = $mainMod, mouse:273, resizewindow
 
 # Screenshots
 bind = $mainMod, P, exec, hyprshot -m window -r - | swappy -f -
-#bind = $mainMod, P, exec, hyprshot -m window -r - | swappy -f - -o (zenity --file-selection --confirm-overwrite --save)
-#bind = SHIFT $mainMod, P, exec, hyprshot -m region -r - | swappy -f - -o (zenity --file-selection --confirm-overwrite --save)
 bind = SHIFT $mainMod, P, exec, hyprshot -m region -r - | swappy -f -
 
 # applications
@@ -308,10 +314,3 @@ exec = gsettings set org.gnome.desktop.interface gtk-theme "catppuccin-mocha-lav
 exec = gsettings set org.gnome.desktop.interface color-scheme "prefer-dark"   # for GTK4 apps
 
 env = QT_QPA_PLATFORMTHEME,qt6ct   # for Qt apps
-# Workspace Rules
-workspace = 1, monitor:$left
-workspace = 2, monitor:$left
-workspace = 3, monitor:$right
-workspace = 4, monitor:$right
-workspace = 5, monitor:$right
-workspace = 6, monitor:$right
