@@ -23,32 +23,24 @@ $discord = discord
 # Or execute your favorite apps at launch like this:
 
 # Start-up applications
-exec-once = [workspace 1] firefox
-#exec-once = [workspace 2 silent] obsidian
+exec-once = [workspace 1] zen-browser
+#exec-once = [workspace 2 silent] $notes
 exec-once = [workspace 5 silent] $discord
-exec-once = [workspace 6 silent] spotify-launcher
+#exec-once = [workspace 6 silent] spotify-launcher
 
 # Hyprland config
 exec-once = swaync
 exec-once = waybar
 exec-once = udiskie
+exec-once = hypridle
+#exec-once = swww-daemon
 
 # Authentication polkit
-exec-once = /usr/lib/polkit-kde-authentication-agent-1
+#exec-once = /usr/lib/polkit-kde-authentication-agent-1
+exec-once = systemctl --user start hyprpolkitagent
 
 # Screensharing
-exec-once=dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
-
-# Apps/Visual
-exec-once = [workspace 1] firefox
-exec-once = [workspace 5 silent] $discord
-exec-once = [workspace 6 silent] spotify-launcher
-exec-once = [workspace 2 silent] $notes
-#exec-once = nm-applet &
-exec-once = waybar
-
-# Activate auto-mount
-exec-once = udiskie &
+exec-once = dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 
 #############################
 ### ENVIRONMENT VARIABLES ###
@@ -67,6 +59,9 @@ env = QT_QPA_PLATFORMTHEME,qt6ct
 env = XDG_CURRENT_DESKTOP,Hyprland
 env = XDG_SESSION_TYPE,wayland
 env = XDG_SESSION_DESKTOP,Hyprland
+env = DISPLAY,:0
+#env = XDG_RUNTIME_DIR,"/run/user/$UID"
+#env = DBUS_SESSION_BUS_ADDRESS,"unix:path=${XDG_RUNTIME_DIR}/bus"
 
 cursor {
     no_hardware_cursors = true
@@ -81,7 +76,7 @@ cursor {
 # https://wiki.hyprland.org/Configuring/Variables/#general
 general {
     gaps_in = 5
-    gaps_out = 20
+    gaps_out = 10
 
     border_size = 2
 
@@ -140,7 +135,7 @@ animations {
 
 # See https://wiki.hyprland.org/Configuring/Dwindle-Layout/ for more
 dwindle {
-    pseudotile = true # Master switch for pseudotiling. Enabling is bound to mainMod + P in the keybinds section below
+    #    pseudotile = true # Master switch for pseudotiling. Enabling is bound to mainMod + P in the keybinds section below
     preserve_split = true # You probably want this
 }
 
@@ -169,9 +164,7 @@ input {
     kb_rules =
 
     follow_mouse = 1
-
-    # Laptop w/ MX Anywhere 3
-    #sensitivity = -0.5 # -1.0 - 1.0, 0 means no modification.
+    #scroll_factor = 2.0
     accel_profile = "flat"
 
     touchpad {
@@ -181,19 +174,16 @@ input {
       tap-to-click = false
     }
 }
+# Laptop w/ MX Anywhere 3
+device {
+    name=logitech-mx-anywhere-3
+    sensitivity = -0.5 # -1.0 - 1.0, 0 means no modification.
+}
 
 # https://wiki.hyprland.org/Configuring/Variables/#gestures
 gestures {
-    workspace_swipe = true
+    #workspace_swipe = true
     workspace_swipe_distance = 500
-}
-
-# Example per-device config
-# See https://wiki.hyprland.org/Configuring/Keywords/#per-device-input-configs for more
-device {
-    name = logitech-mx-anywhere-3-1
-    sensitivity = -0.6
-    accel_profile = "flat"
 }
 
 
@@ -211,8 +201,8 @@ bind = $mainMod, M, exit,
 bind = $mainMod, E, exec, $fileManager
 bind = $mainMod, V, togglefloating,
 bind = $mainMod, R, exec, $menu
-bind = $mainMod, P, pseudo, # dwindle
-bind = $mainMod, J, togglesplit, # dwindle
+bind = $mainMod, D, pseudo, # dwindle
+bind = $mainMod, H, layoutmsg, togglesplit, # dwindle
 
 # Move focus with mainMod + arrow keys
 bind = $mainMod, left, movefocus, l
@@ -262,6 +252,8 @@ bindm = $mainMod, mouse:273, resizewindow
 
 # Screenshots
 bind = $mainMod, P, exec, hyprshot -m window -r - | swappy -f -
+#bind = $mainMod, P, exec, hyprshot -m window -r - | swappy -f - -o (zenity --file-selection --confirm-overwrite --save)
+#bind = SHIFT $mainMod, P, exec, hyprshot -m region -r - | swappy -f - -o (zenity --file-selection --confirm-overwrite --save)
 bind = SHIFT $mainMod, P, exec, hyprshot -m region -r - | swappy -f -
 
 # applications
@@ -288,29 +280,39 @@ bindl = , XF86AudioPrev, exec, playerctl previous
 # Poweroff
 bind = , XF86PowerOff, exec, wlogout
 
+# Zoom
+bind = $mainMod, Z, exec, hypr-zoom -easing=OutBack -easingOut=OutExpo 
+
 ##############################
 ### WINDOWS AND WORKSPACES ###
 ##############################
 
 ### FLOATING ###
-windowrulev2 = float, class:(prismlauncher)
-windowrulev2 = float, class:(ark)
-windowrulev2 = float, class:(via)
+#windowrulev2 = float, class:(prismlauncher)
+#windowrulev2 = float, class:(ark)
+#windowrulev2 = float, class:(via)
 # windowrulev2 = float, class:(kitty)
-windowrulev2 = float, class:(localsend)
-windowrulev2 = float, class:(puddletag)
-windowrulev2 = float, class:(love) # Olympus for Celeste
+#windowrulev2 = float, class:(localsend)
+#windowrulev2 = float, class:(puddletag)
+#windowrulev2 = float, class:(love) # Olympus for Celeste
 
 ### OPACITY ###
-windowrulev2 = opacity 0.9 0.9, class:(kitty)
-windowrulev2 = opacity 0.9 0.9, class:(thunar)
-windowrulev2 = opacity 0.9 0.9, class:(ark)
+#windowrulev2 = opacity 0.9 0.9, class:(kitty)
+#windowrulev2 = opacity 0.9 0.9, class:(thunar)
+#windowrulev2 = opacity 0.9 0.9, class:(ark)
 
 # Fix some dragging issues with XWayland
-windowrulev2 = nofocus,class:^$,title:^$,xwayland:1,floating:1,fullscreen:0,pinned:0
+#windowrule = nofocus,class:^$,title:^$,xwayland:1,floating:1,fullscreen:0,pinned:0
 
 # Dark Mode
 exec = gsettings set org.gnome.desktop.interface gtk-theme "catppuccin-mocha-lavender-standard+default"   # for GTK3 apps
 exec = gsettings set org.gnome.desktop.interface color-scheme "prefer-dark"   # for GTK4 apps
 
 env = QT_QPA_PLATFORMTHEME,qt6ct   # for Qt apps
+# Workspace Rules
+workspace = 1, monitor:$left
+workspace = 2, monitor:$left
+workspace = 3, monitor:$right
+workspace = 4, monitor:$right
+workspace = 5, monitor:$right
+workspace = 6, monitor:$right

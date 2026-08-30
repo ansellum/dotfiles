@@ -48,7 +48,7 @@ bindkey '\e[B' history-search-forward
 
 # Config settings
 alias zshconfig="nvim ~/.zshrc"
-alias hyprconfig="nvim ~/.config/hypr/hyprland.conf"
+alias hyprconfig="nvim ~/.config/hypr/hyprland.lua"
 
 ## Program replacements
 alias yeet="$aurhelper -Rns"
